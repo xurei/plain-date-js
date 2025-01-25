@@ -54,9 +54,10 @@ Instead of forcing you into one decision, this library leaves those kinds of que
 your own application logic.
 
 The end goal of this library is to **simplify date handling**. The fewer complications there are, the easier it is to 
-mentally process and reason about dates. `PlainDate` is designed to make working with dates is more straightforward for 
-developers, by focusing on the essentials.
-In the end, it makes it easier to handle dates without getting bogged down by unnecessary complexity, and avoid unexpected corner cases.
+mentally process and reason about dates. `PlainDate` is designed to make working with dates more straightforward, 
+less confusing.  
+In the end, it makes it easier to handle dates without getting bogged down by unnecessary complexity,
+and avoid unexpected corner cases.
 
 Ultimately, the simpler you can make the problem, the easier it becomes to think about it.
 
