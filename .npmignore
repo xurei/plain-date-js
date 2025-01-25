@@ -1,5 +1,8 @@
+/.idea/**/*
+*.iml
+
 /test/**/*
 /vitest.config.ts
 /coverage/**/*
-/.idea/**/*
-*.iml
+test-report.*
+

@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
-    "test": "vitest --coverage"
+    "test": "vitest --coverage --reporter=junit --outputFile=test-report.junit.xml"
   },
   "repository": {
     "type": "git",

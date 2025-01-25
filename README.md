@@ -1,5 +1,8 @@
 # PlainDate
-A lightweight, simple library for handling dates without the ~~headaches~~ complexities of dates. 
+A lightweight, simple library for handling dates without the ~~headaches~~ complexities of dates.
+
+[![codecov](https://codecov.io/gh/xurei/plain-date-js/branch/main/graph/badge.svg?token=59DRZOTEPW)](https://codecov.io/gh/xurei/plain-date-js)
+![NPM Version](https://img.shields.io/npm/v/@xureilab/plain-date)
 
 It allows you to work with "plain" dates, where the focus is entirely on the day, month, and year, leaving out 
 complications such as hours, minutes, seconds, timezones, and other intricacies.
@@ -20,7 +23,7 @@ you should consider using PlainDate alongside libraries like [date-fns](https://
 - **Date Comparison**: Compare dates (before, after, equal).
 - **Date Range Check**: Check if a date is within a given date range.
 - **Leap Year Handling**: Automatically accounts for leap years when adding/subtracting days or working with months.
-- **Fully tested**: See the Codecov page for details.
+- **Fully tested**: See the [Codecov](https://app.codecov.io/gh/xurei/plain-date-js) page for details.
 - **No dependency**: Because no one likes that.
 
 ## Installation
