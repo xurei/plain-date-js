@@ -1,0 +1,41 @@
+{
+  "name": "@xureilab/plain-date",
+  "version": "0.0.1",
+  "description": "Lightweight, simple library for handling dates without the complexities of timezones, time components, or some of the more subtle aspects of date manipulation.",
+  "author": {
+    "email": "xureilab@gmail.com",
+    "name": "Xurei Lab"
+  },
+  "main": "./lib/cjs/plain-date.js",
+  "module": "./lib/module/plain-date.js",
+  "types": "./lib/module/plain-date.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
+    "test": "vitest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xurei/simple-date-js.git"
+  },
+  "keywords": [
+    "date",
+    "js",
+    "ts",
+    "plain"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xurei/simple-date-js/issues"
+  },
+  "homepage": "https://github.com/xurei/simple-date-js#readme",
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "@vitest/coverage-v8": "^3.0.4",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4"
+  }
+}

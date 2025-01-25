@@ -1,5 +1,5 @@
 import {describe, it, expect, vi, afterAll, beforeAll} from 'vitest';
-import {PlainDate} from '../src/util/plain-date';
+import {PlainDate} from '../src/plain-date';
 import assert from 'node:assert/strict';
 
 describe('PlainDate', () => {
@@ -182,6 +182,7 @@ describe('PlainDate', () => {
     assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 1, 15)), -31);
     assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 1)), -14);
     assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 3, 1)), 15);
+    assert.equal(new PlainDate(2024, 3, 5).getDaysDifference(new PlainDate(2024, 3, 20)), 15);
     assert.equal(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2024, 2, 15)), 365);
     assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2025, 2, 15)), 366);
     assert.equal(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2025, 2, 15)), 365 + 366);
