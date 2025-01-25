@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                       // Target modern JavaScript (ES2020)
+    "module": "ESNext",                       // Use ESNext module system for ESM builds
+    "moduleResolution": "node",               // Enable Node.js-style module resolution
+    "outDir": "./lib",                        // Output directory for compiled files
+    "declaration": true,                      // Generate declaration files (.d.ts)
+    "declarationMap": true,                   // Generate declaration map files
+    "sourceMap": true,                   // Generate declaration map files
+    "esModuleInterop": true,                  // Enable compatibility for CommonJS and ESM
+    "skipLibCheck": true,                     // Skip type checking of declaration files (for faster builds)
+    "strict": true,                           // Enable strict type checking
+    "noImplicitAny": true                     // Disallow `any` type unless explicitly specified
+  },
+  "include": ["src/**/*.ts"],                 // Include all .ts files in the src directory
+  "exclude": ["node_modules", "lib"]          // Exclude node_modules and lib from the build
+}
