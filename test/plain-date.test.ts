@@ -304,7 +304,7 @@ describe('PlainDate', () => {
       for (const tz of timezones) {
         it(tz, () => {
           process.env.TZ = tz;
-          const date = PlainDate.fromISOString('2022-09-28').toJSUTCDate();
+          const date = PlainDate.fromISOString('2022-09-28').toUTCJSDate();
           expect(date.toISOString()).toBe('2022-09-28T00:00:00.000Z');
         });
       }

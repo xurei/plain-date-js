@@ -164,7 +164,7 @@ console.log(date.toJSDate()); // 2024-02-15T04:00:00.000Z in New York timezone
 #### UTC timezone
 ```typescript
 const date = new PlainDate(2024, 2, 15);
-console.log(date.toJSUTCDate()); // 2024-02-15T00:00:00.000Z in UTC timezone
+console.log(date.toUTCJSDate()); // 2024-02-15T00:00:00.000Z in UTC timezone
 ```
 
 ## License

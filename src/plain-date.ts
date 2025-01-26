@@ -185,7 +185,7 @@ export class PlainDate {
   /**
    * Returns a JS Date object with the UTC timezone at midnight
    */
-  toJSUTCDate(): Date {
+  toUTCJSDate(): Date {
     return new Date(`${this.toISOString()}T00:00:00.000Z`);
   }
 
