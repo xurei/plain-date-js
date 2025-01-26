@@ -152,6 +152,20 @@ export class PlainDate {
   }
 
   /**
+   * Returns a JS Date object with the local timezone at midnight
+   */
+  toJSDate(): Date {
+    return new Date(this.year, this.month-1, this.day, 0, 0, 0, 0);
+  }
+
+  /**
+   * Returns a JS Date object with the UTC timezone at midnight
+   */
+  toJSUTCDate(): Date {
+    return new Date(`${this.toISOString()}T00:00:00.000Z`);
+  }
+
+  /**
    * Adds a specified number of days to the current date.
    */
   addDays(days: number): PlainDate {

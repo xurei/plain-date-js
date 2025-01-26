@@ -256,4 +256,51 @@ describe('PlainDate', () => {
     assert.equal(new PlainDate(2025, 1, 18).getDayOfWeekStr(), 'Saturday');
     assert.equal(new PlainDate(2025, 1, 19).getDayOfWeekStr(), 'Sunday');
   });
+
+  describe('toJSDate()', () => {
+    const realTZ = process.env.TZ;
+    afterAll(() => {
+      process.env.TZ = realTZ;
+    });
+
+    it('America/New_York', () => {
+      process.env.TZ = 'America/New_York';
+      const date = PlainDate.fromISOString('2021-05-06').toJSDate();
+      expect(date.toISOString()).toBe('2021-05-06T04:00:00.000Z');
+    });
+
+    it('Europe/Paris', () => {
+      process.env.TZ = 'Europe/Paris';
+      const date = PlainDate.fromISOString('2021-05-06').toJSDate();
+      expect(date.toISOString()).toBe('2021-05-05T22:00:00.000Z'); // one day in the past in UTC format, as we are in a GMT+1 timezone
+    });
+
+    it('Etc/UTC', () => {
+      process.env.TZ = 'Etc/UTC';
+      const date = PlainDate.fromISOString('2021-05-06').toJSDate();
+      expect(date.toISOString()).toBe('2021-05-06T00:00:00.000Z');
+    });
+  });
+
+  describe('toJSUTCDate()', () => {
+    const realTZ = process.env.TZ;
+    afterAll(() => {
+      process.env.TZ = realTZ;
+    });
+
+    describe('should return the right date, regardless of the timezone', () => {
+      const timezones = [
+        'America/New_York',
+        'Etc/UTC',
+        'Europe/Brussels'
+      ];
+      for (const tz of timezones) {
+        it(tz, () => {
+          process.env.TZ = tz;
+          const date = PlainDate.fromISOString('2022-09-28').toJSUTCDate();
+          expect(date.toISOString()).toBe('2022-09-28T00:00:00.000Z');
+        });
+      }
+    });
+  });
 });

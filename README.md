@@ -100,7 +100,6 @@ const jsDate = new Date(/* ... */);
 const date = PlainDate.fromUTCJSDate(jsDate);
 ```
 
-
 ### Adding or Subtracting Days
 You can easily add or subtract days from a PlainDate:
 ```typescript
@@ -151,6 +150,21 @@ console.log(new PlainDate(2024, 1, 15).getDaysDifference(new PlainDate(2025, 1, 
 const date = new PlainDate(2024, 2, 15);
 console.log(date.getDayOfWeek()); // 5 (Friday)
 console.log(date.getDayOfWeekStr()); // "Friday"
+```
+
+### Convert to JS Date
+By convention, returned JS Dates are set at midnight.
+
+#### Local timezone
+```typescript
+const date = new PlainDate(2024, 2, 15);
+console.log(date.toJSDate()); // 2024-02-15T04:00:00.000Z in New York timezone
+```
+
+#### UTC timezone
+```typescript
+const date = new PlainDate(2024, 2, 15);
+console.log(date.toJSUTCDate()); // 2024-02-15T00:00:00.000Z in UTC timezone
 ```
 
 ## License
