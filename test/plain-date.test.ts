@@ -124,20 +124,32 @@ describe('PlainDate', () => {
     });
   });
 
+  describe('clone()', () => {
+    it('Provides a copy', () => {
+      const a = new PlainDate(2024, 3, 31);
+      const b = a.clone();
+      expect(a === b).toBe(false);
+    });
+    it('returns an equal PlainDate', () => {
+      expect(new PlainDate(2024, 3, 31).clone().isEqual(new PlainDate(2024, 3, 31))).toBe(true);
+      expect(new PlainDate(2020, 9, 15).clone().isEqual(new PlainDate(2020, 9, 15))).toBe(true);
+    });
+  });
+
   it('isLeapYear()', () => {
-    assert.equal(PlainDate.isLeapYear(2000), true);
-    assert.equal(PlainDate.isLeapYear(2001), false);
-    assert.equal(PlainDate.isLeapYear(2002), false);
-    assert.equal(PlainDate.isLeapYear(2003), false);
-    assert.equal(PlainDate.isLeapYear(2004), true);
-    assert.equal(PlainDate.isLeapYear(2005), false);
-    assert.equal(PlainDate.isLeapYear(2006), false);
-    assert.equal(PlainDate.isLeapYear(2007), false);
-    assert.equal(PlainDate.isLeapYear(2008), true);
-    assert.equal(PlainDate.isLeapYear(2024), true);
-    assert.equal(PlainDate.isLeapYear(2025), false);
-    assert.equal(PlainDate.isLeapYear(2100), false);
-    assert.equal(PlainDate.isLeapYear(2400), true);
+    expect(PlainDate.isLeapYear(2000)).toBe(true);
+    expect(PlainDate.isLeapYear(2001)).toBe(false);
+    expect(PlainDate.isLeapYear(2002)).toBe(false);
+    expect(PlainDate.isLeapYear(2003)).toBe(false);
+    expect(PlainDate.isLeapYear(2004)).toBe(true);
+    expect(PlainDate.isLeapYear(2005)).toBe(false);
+    expect(PlainDate.isLeapYear(2006)).toBe(false);
+    expect(PlainDate.isLeapYear(2007)).toBe(false);
+    expect(PlainDate.isLeapYear(2008)).toBe(true);
+    expect(PlainDate.isLeapYear(2024)).toBe(true);
+    expect(PlainDate.isLeapYear(2025)).toBe(false);
+    expect(PlainDate.isLeapYear(2100)).toBe(false);
+    expect(PlainDate.isLeapYear(2400)).toBe(true);
   });
 
   it('addDays()', () => {
@@ -164,11 +176,11 @@ describe('PlainDate', () => {
   });
 
   it('isEqual()', () => {
-    assert.equal(new PlainDate(2024, 2, 15).isEqual(new PlainDate(2024, 2, 15)), true);
-    assert.equal(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2000, 5, 15)), true);
-    assert.equal(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2000, 5, 16)), false);
-    assert.equal(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2000, 6, 15)), false);
-    assert.equal(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2001, 5, 15)), false);
+    expect(new PlainDate(2024, 2, 15).isEqual(new PlainDate(2024, 2, 15))).toBe(true);
+    expect(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2000, 5, 15))).toBe(true);
+    expect(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2000, 5, 16))).toBe(false);
+    expect(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2000, 6, 15))).toBe(false);
+    expect(new PlainDate(2000, 5, 15).isEqual(new PlainDate(2001, 5, 15))).toBe(false);
   });
   it('subDays()+addDays()', () => {
     assert.deepEqual(new PlainDate(2024, 2, 15).subDays(3).addDays(3), new PlainDate(2024, 2, 15));
@@ -176,48 +188,51 @@ describe('PlainDate', () => {
   });
 
   it('getDaysDifference()', () => {
-    assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 15)), 0);
-    assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 14)), -1);
-    assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 16)), 1);
-    assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 1, 15)), -31);
-    assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 1)), -14);
-    assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 3, 1)), 15);
-    assert.equal(new PlainDate(2024, 3, 5).getDaysDifference(new PlainDate(2024, 3, 20)), 15);
-    assert.equal(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2024, 2, 15)), 365);
-    assert.equal(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2025, 2, 15)), 366);
-    assert.equal(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2025, 2, 15)), 365 + 366);
-    assert.equal(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2025, 3, 5)), 365 + 366 + 13 + 5);
+    expect(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 15))).toBe(0);
+    expect(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 14))).toBe(-1);
+    expect(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 16))).toBe(1);
+    expect(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 1, 15))).toBe(-31);
+    expect(new PlainDate(2024, 8, 27).getDaysDifference(new PlainDate(2024, 7, 27))).toBe(-31);
+    expect(new PlainDate(2024, 7, 27).getDaysDifference(new PlainDate(2024, 6, 27))).toBe(-30);
+    expect(new PlainDate(2024, 6, 15).getDaysDifference(new PlainDate(2024, 7, 15))).toBe(30);
+    expect(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 2, 1))).toBe(-14);
+    expect(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2024, 3, 1))).toBe(15);
+    expect(new PlainDate(2024, 3, 5).getDaysDifference(new PlainDate(2024, 3, 20))).toBe(15);
+    expect(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2024, 2, 15))).toBe(365);
+    expect(new PlainDate(2024, 2, 15).getDaysDifference(new PlainDate(2025, 2, 15))).toBe(366);
+    expect(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2025, 2, 15))).toBe(365 + 366);
+    expect(new PlainDate(2023, 2, 15).getDaysDifference(new PlainDate(2025, 3, 5))).toBe(365 + 366 + 13 + 5);
   });
 
   it('isInInterval()', () => {
     // Same month&year, days
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 15), new PlainDate(2024, 2, 15)), true);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 16), new PlainDate(2024, 2, 15)), true);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 16), new PlainDate(2024, 2, 16)), false);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 1, 10), new PlainDate(2024, 2, 14)), false);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 15), new PlainDate(2024, 2, 15))).toBe(true);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 16), new PlainDate(2024, 2, 15))).toBe(true);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 16), new PlainDate(2024, 2, 16))).toBe(false);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 1, 10), new PlainDate(2024, 2, 14))).toBe(false);
 
     // Same year, different months
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 1, 15), new PlainDate(2024, 2, 15)), true);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 15), new PlainDate(2024, 3, 1)), true);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 1), new PlainDate(2024, 3, 1)), true);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 3, 15), new PlainDate(2024, 4, 15)), false);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 1, 15), new PlainDate(2024, 1, 15)), false);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 1, 15), new PlainDate(2024, 2, 15))).toBe(true);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 15), new PlainDate(2024, 3, 1))).toBe(true);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 2, 1), new PlainDate(2024, 3, 1))).toBe(true);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 3, 15), new PlainDate(2024, 4, 15))).toBe(false);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2024, 1, 15), new PlainDate(2024, 1, 15))).toBe(false);
 
     // Different years
-    assert.equal(new PlainDate(2024, 5, 15).isInInterval(new PlainDate(2023, 5, 15), new PlainDate(2024, 5, 15)), true);
-    assert.equal(new PlainDate(2024, 6, 15).isInInterval(new PlainDate(2024, 6, 15), new PlainDate(2025, 6, 15)), true);
-    assert.equal(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2023, 2, 15), new PlainDate(2023, 12, 31)), false);
+    expect(new PlainDate(2024, 5, 15).isInInterval(new PlainDate(2023, 5, 15), new PlainDate(2024, 5, 15))).toBe(true);
+    expect(new PlainDate(2024, 6, 15).isInInterval(new PlainDate(2024, 6, 15), new PlainDate(2025, 6, 15))).toBe(true);
+    expect(new PlainDate(2024, 2, 15).isInInterval(new PlainDate(2023, 2, 15), new PlainDate(2023, 12, 31))).toBe(false);
   });
 
   it('getDayOfWeek()', () => {
-    assert.equal(new PlainDate(2023, 3, 6).getDayOfWeekStr(), 'Monday');
-    assert.equal(new PlainDate(2023, 3, 7).getDayOfWeekStr(), 'Tuesday');
-    assert.equal(new PlainDate(2024, 8, 21).getDayOfWeekStr(), 'Wednesday');
-    assert.equal(new PlainDate(2025, 1, 9).getDayOfWeekStr(), 'Thursday');
-    assert.equal(new PlainDate(2025, 1, 10).getDayOfWeekStr(), 'Friday');
-    assert.equal(new PlainDate(2025, 1, 17).getDayOfWeekStr(), 'Friday');
-    assert.equal(new PlainDate(2025, 1, 18).getDayOfWeekStr(), 'Saturday');
-    assert.equal(new PlainDate(2025, 1, 19).getDayOfWeekStr(), 'Sunday');
+    expect(new PlainDate(2023, 3, 6).getDayOfWeekStr()).toBe('Monday');
+    expect(new PlainDate(2023, 3, 7).getDayOfWeekStr()).toBe('Tuesday');
+    expect(new PlainDate(2024, 8, 21).getDayOfWeekStr()).toBe('Wednesday');
+    expect(new PlainDate(2025, 1, 9).getDayOfWeekStr()).toBe('Thursday');
+    expect(new PlainDate(2025, 1, 10).getDayOfWeekStr()).toBe('Friday');
+    expect(new PlainDate(2025, 1, 17).getDayOfWeekStr()).toBe('Friday');
+    expect(new PlainDate(2025, 1, 18).getDayOfWeekStr()).toBe('Saturday');
+    expect(new PlainDate(2025, 1, 19).getDayOfWeekStr()).toBe('Sunday');
   });
 
   describe('today()', () => {
@@ -247,14 +262,6 @@ describe('PlainDate', () => {
         });
       }
     });
-    assert.equal(new PlainDate(2023, 3, 6).getDayOfWeekStr(), 'Monday');
-    assert.equal(new PlainDate(2023, 3, 7).getDayOfWeekStr(), 'Tuesday');
-    assert.equal(new PlainDate(2024, 8, 21).getDayOfWeekStr(), 'Wednesday');
-    assert.equal(new PlainDate(2025, 1, 9).getDayOfWeekStr(), 'Thursday');
-    assert.equal(new PlainDate(2025, 1, 10).getDayOfWeekStr(), 'Friday');
-    assert.equal(new PlainDate(2025, 1, 17).getDayOfWeekStr(), 'Friday');
-    assert.equal(new PlainDate(2025, 1, 18).getDayOfWeekStr(), 'Saturday');
-    assert.equal(new PlainDate(2025, 1, 19).getDayOfWeekStr(), 'Sunday');
   });
 
   describe('toJSDate()', () => {

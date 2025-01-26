@@ -118,11 +118,19 @@ export class PlainDate {
   }
 
   /**
+   * Copy the current PlainDate and return a new date with same values.
+   */
+  clone(): PlainDate {
+    return new PlainDate(this.year, this.month, this.day);
+  }
+
+  /**
    * Returns the number of days in each month for a given year.
    * Accounts for leap years.
    */
   static daysInMonth(year: number): number[] {
     return [
+      0, // Index 0 is ignored
       31,
       PlainDate.isLeapYear(year) ? 29 : 28,
       31, 30, 31, 30,
@@ -154,7 +162,7 @@ export class PlainDate {
       return false;
     }
 
-    const daysInMonth = PlainDate.daysInMonth(this.year)[this.month - 1];
+    const daysInMonth = PlainDate.daysInMonth(this.year)[this.month];
     return this.day <= daysInMonth;
   }
 
@@ -192,7 +200,7 @@ export class PlainDate {
     let {year, month, day} = this;
 
     while (days > 0) {
-      const monthDays = PlainDate.daysInMonth(year)[month - 1];
+      const monthDays = PlainDate.daysInMonth(year)[month];
       if (day + days > monthDays) {
         days -= monthDays - day + 1;
         day = 1;
@@ -233,7 +241,7 @@ export class PlainDate {
           month = 12;
           year--;
         }
-        day = PlainDate.daysInMonth(year)[month - 1];
+        day = PlainDate.daysInMonth(year)[month];
       }
     }
 
@@ -274,8 +282,8 @@ export class PlainDate {
         return to.day - this.day;
       }
       else {
-        totalDays += PlainDate.daysInMonth(this.year)[this.month - 1] - this.day;
-        for (let m = this.month; m < to.month - 1; m++) {
+        totalDays += PlainDate.daysInMonth(this.year)[this.month] - this.day;
+        for (let m = this.month + 1; m < to.month; m++) {
           totalDays += PlainDate.daysInMonth(this.year)[m];
         }
         totalDays += to.day;
